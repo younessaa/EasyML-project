@@ -1,0 +1,11 @@
+
+
+.imgExpert {
+    width: 60%;
+    border-radius: 4px;
+}
+.discExpert {
+    font-weight: 500;
+    font-size: 1.3em;
+    color: rgb(48, 42, 30);
+}
