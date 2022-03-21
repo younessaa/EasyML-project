@@ -5,6 +5,7 @@ const url_models = 'http://localhost:5000/models';
 const API = axios.create({baseURL : 'http://localhost:5000'});
 const url_blogs = 'http://localhost:5000/blogs';
 const url_user = 'http://localhost:5000/user';
+const url_exploitables = 'http://localhost:5000/exploitables';
 
 export const fetchBlogs = () => axios.get(url_blogs);
 export const createBlog = (newBlog) => axios.post(url_blogs, newBlog);
@@ -26,3 +27,7 @@ export const signUp = (formData) => API.post('/user/signup' , formData);
 export const createUser = (newUser) => axios.post(url_user, newUser);
 export const fetchUsers = () => axios.get(url_user);
 export const deleteUser = (id) => axios.delete(`${url_user}/${id}`);
+
+export const fetchExploitables = () => axios.get(url_exploitables);
+export const createExploitable = (newExploitable) => axios.post(url_exploitables, newExploitable);
+export const deleteExploitable = (id) => axios.delete(`${url_exploitables}/${id}`);

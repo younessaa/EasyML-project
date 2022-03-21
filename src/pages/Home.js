@@ -100,6 +100,9 @@ const Home = () => {
                         <div className='row mb-5'>
                             <div className="col-lg-12"></div>
                         </div>
+                        <div className='row mb-5'>
+                            <div className="col-lg-12"></div>
+                        </div>
                         <div className='row'>
                             <IconText column='col-lg-12' 
                                 icon={expertsIcon}

@@ -18,3 +18,7 @@ export const LOGOUT = 'LOGOUT'
 export const CREATE_user = 'CREATE_user';
 export const FETCH_ALL_users = 'FETCH_ALL_users';
 export const DELETE_user = 'DELETE_user';
+
+export const CREATE_exploitable = 'CREATE_exploitable';
+export const DELETE_exploitable = 'DELETE_exploitable';
+export const FETCH_ALL_exploitables = 'FETCH_ALL_exploitables';

@@ -16,6 +16,10 @@ import ExpertDetails from './components/ExpertDetails/ExpertDetails';
 import { getExperts } from './actions/Experts';
 import { getModels } from './actions/Models';
 import useStyles from './styles';
+import Exploite from "./pages/Exploite/Exploite";
+import ChoseModel from "./pages/ChoseModel";
+import Build from "./pages/Build/Build"
+import ShowModel from './pages/ShowModel';
 
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
@@ -57,8 +61,13 @@ const App = () => {
         <Route exact path="/" element={<Home/>}></Route>
         <Route exact path="/blogs" element={<Blogs />}></Route>
         <Route exact path="/models" element={<Models />}></Route>
+        <Route exact path="/models/:id" element={<ShowModel/>}></Route>
         <Route exact path="/signin" element={<SingIn/>}></Route>
         <Route exact path="/showBlog/:id" element={<ShowBlog/>}></Route>
+        <Route exact path="/ChoseModel" element={<ChoseModel/>}  />
+        <Route path="/Build/:model_name" element={<Build/>}  />
+        <Route path="/Exploite/:tocken" element={<Exploite/>}  />
+
 
       </Routes>
     </Router>

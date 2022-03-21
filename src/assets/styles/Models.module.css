@@ -52,3 +52,17 @@
     bottom: 2%;
     margin-left: -4%;
 }
+
+.ourModels {
+    text-align: center;
+    background-color: #7B659C;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.expertsModels {
+    text-align: center;
+    background-color: #7B659C;
+    border-radius: 8px;
+    padding: 16px;
+}
