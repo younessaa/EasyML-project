@@ -33,3 +33,34 @@ export const signup = async (req, res) => {
     }
     
 }
+export const createUser = async (req, res) => {
+    const { name,email,password, id} = req.body;
+
+    const newUser = new User({  name,email,password, id })
+
+    try {
+        await newUser.save();
+
+        res.status(201).json(newUser);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+export const getUsers = async (req, res) => { 
+    try {
+        const UserDatas = await User.find();
+                
+        res.status(200).json(UserDatas);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+export const deleteUser = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No expert with id: ${id}`);
+
+    await User.findByIdAndRemove(id);
+
+    res.json({ message: "expert deleted successfully." });
+}

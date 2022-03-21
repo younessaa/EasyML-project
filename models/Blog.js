@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 
 const BlogSchema = new Schema({
 
-    idExpert: {
-        type: String,
-        require: true
-    },
+    
 
     title: {
         type: String,
@@ -20,7 +17,11 @@ const BlogSchema = new Schema({
     },
 
     selectedFile: String,
-
+    
+    idExpert: {
+        type: String,
+        require: true
+    },
     createdAt: {
         type: Date,
         default: Date.now

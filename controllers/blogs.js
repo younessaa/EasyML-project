@@ -35,30 +35,21 @@ export const getBlog = async (req, res) => {
 };
 
 // create a blog for an expert
+
+// update 1 blog belonging to 1 expert
 export const createBlog = async (req, res) => {
-    const body = req.body;
+    const {  title,content, selectedFile, idExpert} = req.body;
 
-    const newBlog = new Blog(body);
+    const newBlog = new Blog({   title ,content, selectedFile, idExpert })
 
-    try{
+    try {
         await newBlog.save();
 
         res.status(201).json(newBlog);
-    } catch (error){
-        res.status(409).json({message: error});
+    } catch (error) {
+        res.status(409).json({ message: error.message });
     }
-};
-
-// update 1 blog belonging to 1 expert
-export const updateBlog = async (req, res) => {
-    try{
-        const blog = await Blog.findOneAndUpdate({ idExpert: req.params.expertId, _id: req.params.blogId}, { $set: req.body});
-
-        res.status(200).json(blog);
-    } catch (error){
-        res.status(404).json({message: error.message});
-    }
-};
+}
 
 // delete 1 blog belonging to 1 expert
 export const deleteBlog = async (req, res) => {

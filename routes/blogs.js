@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getBlogs, getBlogsExpert, getBlog, createBlog, updateBlog, deleteBlog } from '../controllers/blogs.js';
+import { getBlogs, getBlogsExpert, getBlog, createBlog, deleteBlog } from '../controllers/blogs.js';
 
 const router = express.Router();
 
@@ -19,7 +19,6 @@ router.post('/', createBlog);
 
 
 // update 1 blog belonging to 1 expert
-router.patch('/experts/:expertId/blogs:blogId', updateBlog);
 
 // delete 1 blog belonging to 1 expert
 router.delete('/experts/:expertId/blogs:blogId', deleteBlog);
