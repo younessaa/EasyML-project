@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Expert from './Expert/Expert';
 import useStyles from './styles';
 
-const Experts = ({ setCurrentId }) => {
+const Experts = ({ user,setCurrentId }) => {
   const expertis = useSelector((state) => state.Experts);
   const classes = useStyles();
 
@@ -16,7 +16,7 @@ const Experts = ({ setCurrentId }) => {
           <div className='row'>
             {expertis.map((expert) => (
               <div className='col-4 mt-2'>
-                <Expert expert={expert} setCurrentId={setCurrentId} />
+                <Expert user={user} expert={expert} setCurrentId={setCurrentId} />
               </div>
             ))}
           </div>

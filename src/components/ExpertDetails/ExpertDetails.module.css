@@ -9,3 +9,9 @@
     font-size: 1.3em;
     color: rgb(48, 42, 30);
 }
+
+.ModelForm {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}

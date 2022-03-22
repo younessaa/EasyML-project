@@ -68,27 +68,7 @@ const Home = () => {
             image: rfrImage
         }
     ];
-    const blogsList = [
-        {
-            id: 1,
-            title: "Common Challenges in Machine Learning and How to Tackle Them",
-            image: blogImage,
-            link: '#'
-        }, 
-        {
-            id: 2,
-            title: "Common Challenges in Machine Learning and How to Tackle Them",
-            image: blogImage,
-            link: '#'
-        }, 
-        {
-            id: 3,
-            title: "Common Challenges in Machine Learning and How to Tackle Them",
-            image: blogImage,
-            link: '#'
-        }
-    ];
-
+    
 
     return(
         <React.Fragment>

@@ -10,7 +10,10 @@ function Header () {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isOpen , setIsOpen] = useState(false);
-  const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const isAdmin = (user!= undefined || user!=null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
+
   useEffect(() => {
     const token = user?.token;
     setUser(JSON.parse(localStorage.getItem('profile')))
@@ -30,7 +33,7 @@ function Header () {
               <div className="row">
                   <div className="col-12">
                     <nav className="navbar navbar-expand-lg navbar-dark">
-                      <a className="navbar-brand" href="#"><h1 className={styles.easyMLTitle}>EasyML</h1></a>
+                      <Link className="navbar-brand" to={isAdmin ? "/dashboard" : "/"}><h1 className={styles.easyMLTitle}>{isAdmin ? "Dashboard" : "EasyML"}</h1></Link>
                       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                       </button>
@@ -83,12 +86,15 @@ function Header () {
             <h2 className={styles.titleStart}>
                 Start your machine learning model now
             </h2>
+            {
+            (user=== undefined || user===null)?
             <Link className={styles.linkSignUp } to={`/signin`}> 
               <div className={styles.btnSingUp}>
                   Sign up now
               </div>
             </Link>
-            
+              :null
+            }
             <div className={styles.marginbuttom}>
             </div>
         </div>

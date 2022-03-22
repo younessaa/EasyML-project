@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import HeaderLite from '../components/HeaderLite/HeaderLite';
 import ImageHeaderLite from '../components/ImageHeaderLite/ImageHeaderLite';
 import bgModels from '../assets/images/bg-models.svg';
@@ -6,21 +6,20 @@ import styles from '../assets/styles/Models.module.css';
 import Footer from '../components/Footer/Footer';
 import DivHeightAnimation from '../components/DivHeightAnimation/DivHeightAnimation';
 import ModelExpertCard from '../components/ModelExpertCard/ModelExpertCard';
+import { getModels } from '../actions/Models';
+
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Models() {
-  
-    const ourModels = [
-        {id: "afg14567ggs", name: "Linear Regression",},
-        {id: "bfg14567ggs", name: "Random Forest Regression",},
-        {id: "csfg14567ggs", name: "Support Vector Regression",},
-    ];
-    const expertsModels = [
-        {id: "asfg14567ggs", name: "Linear Regression",},
-        {id: "atfg14567ggs", name: "Linear Support Vector Machine",},
-        {id: "aufg14567ggs", name: "Random Forest Classifier",},
-        {id: "avfg14567ggs", name: "Gradient Boosting Tree Class",},
-    ]
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getModels());
+    }, [dispatch]);
+    const ourModels = useSelector((state) =>(state.Models.filter(model => model.permission==='admin') ));
+    const expertsModels = useSelector((state) =>(state.Models.filter(model => model.permission==='confirmed') ));
+    console.log(ourModels)
+    console.log(expertsModels)
     return (
         <>
             <HeaderLite />
@@ -37,7 +36,7 @@ function Models() {
                             ourModels.map(
                                 (model) => (
                                     <div className='col-sm'>
-                                        <ModelExpertCard link={model.id} name={model.name}/>
+                                        <ModelExpertCard link={model._id} name={model.name}/>
                                     </div>
                                 )
                                 )
@@ -54,7 +53,7 @@ function Models() {
                             expertsModels.map(
                                 (model) => (
                                     <div className='col-sm'>
-                                        <ModelExpertCard link={model.id} name={model.name}/>
+                                        <ModelExpertCard link={model._id} name={model.name}/>
                                     </div>
                                 )
                             )

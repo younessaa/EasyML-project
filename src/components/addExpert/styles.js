@@ -9,7 +9,8 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    margin: '10%',
+    marginTop: '3%',
+    marginBottom: '3%'
   },
   form: {
     flexWrap: 'wrap',
@@ -24,5 +25,9 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginLeft: '50%',
+    backgroundColor: '#45E598',
+    "&:hover": {
+      backgroundColor: '#45EF98',
+    },
   },
 }));

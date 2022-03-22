@@ -40,8 +40,8 @@ const FormAddBlog = ({id}) => {
                 <Paper className={classes.paper}>
                     <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={hundleSubmit}>
                         <Typography variant="h6">{'Creating'} a Blog</Typography>
-                        <TextField name="title" variant="outlined" label="Title" fullWidth value={blogData.title} onChange={(e) => { setBlogData({...blogData, title: e.target.value})}}/>
-                        <TextField name="content" variant="outlined" label="Content" fullWidth value={blogData.content} onChange={(e) => setBlogData({...blogData, content: e.target.value})}/>
+                        <TextField className={classes.textField} name="title" variant="outlined" label="Title" value={blogData.title} onChange={(e) => { setBlogData({...blogData, title: e.target.value})}}/>
+                        <TextField className={classes.textField} name="content" variant="outlined" multiline rows={10}label="Content" value={blogData.content} onChange={(e) => setBlogData({...blogData, content: e.target.value})}/>
                         <div className={classes.fileInput}>
                             <FileBase type="file" multiple={false} onDone={({base64}) => setBlogData({ ...blogData, selectedFile: base64})}/>
                         </div>

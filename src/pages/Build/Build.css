@@ -18,8 +18,9 @@
     }
   }
   .sidebf{
+    margin-left: 10%;
     display: grid;
-    width: 50%;
+    width: 80%;
     height: 100vh;
     grid-template-rows: 1fr 1.5fr 2fr 1fr 1fr 1.5fr 1.5fr;
   }
@@ -35,49 +36,62 @@
     cursor: pointer;
   }
   .Modelb{
-      width: auto;
+    width: auto;
     margin: 4px;
     padding-top: 10px;
     font-family: Inter;
     font-weight: Bolder;
     font-size: 45px;
     color: white;
+    text-align: center;
   }
   
   .rowb{
-    position: relative;
+    /* position: relative; */
+    margin-top: 3%;
+    margin-left: -5%;
   }
   
-  .rowb p{
+  /* .rowb p{
     position: absolute;
     margin-left: 5%;
     top: 50%;
     transform: translateY(-50%);
-  }
+  } */
   
   .buildyourb {
     color: rgba(0,0,0,1);
     font-family: Inter;
     font-weight: Bold;
     font-size: 33px;
+    text-align: center;
+
   }
   
   .backb {
-    color: rgba(133,145,165,1);
+    color: rgb(178, 188, 206);
     font-family: Inter;
-    font-weight: Semi Bold;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 15%;
+  }
+
+  .backb:hover {
+    color: rgb(178, 188, 206);
+    text-decoration: none;
   }
   
   .dexamplesb {
-    
-    width: 200px;
-    height: 32px;
-    border-radius: 24px;
+    background-color: rgb(160, 159, 159);
+    border: none;
+    border-radius: 8px;
     text-align: center;
-    font-size: 13px;
+    font-size: 1em;
     font-family: Inter;
-    font-weight: Light;
+    font-weight: 400;
+    padding: 1% 2.5%;
+    color: white;
   }
   
   
@@ -87,12 +101,12 @@
     justify-content: space-around;
     align-items: center;
     justify-items: center;
-    position: absolute;
+    /* position: absolute; */
     margin-left: 5%;
-    top: 50%;
+    /* top: 50%;
     transform: translateY(-50%);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
     margin: 0 auto;
     width: 292px;
     background: rgba(68,39,83,1);
@@ -114,7 +128,9 @@
       color: grey;
   }
   .filesb{
-    margin-top: 20px ;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 1em;
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -125,10 +141,7 @@
       display: flex;
       width: 100%;
       align-items: center;
-      flex-direction: column;
-
-      
-      
+      flex-direction: column; 
     }
   }
   
@@ -142,6 +155,11 @@
     justify-content: start ;
     
   }
+
+  .fileb input{
+    margin-left: 12px;
+  }
+
   #b{
     font-size: 13px;
     font-weight: bold;
@@ -177,6 +195,7 @@
     height: 2px;
     background-color: gray;
     width: 60%;
+    margin-bottom: 3%;
 }
 
 .dowexb{

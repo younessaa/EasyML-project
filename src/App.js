@@ -20,11 +20,18 @@ import Exploite from "./pages/Exploite/Exploite";
 import ChoseModel from "./pages/ChoseModel";
 import Build from "./pages/Build/Build"
 import ShowModel from './pages/ShowModel';
+import Dashboard from './pages/Dashboard/Dashboard';
+
 
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
   const classes = useStyles();
+
+  const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  console.log(user)
+
+  const isAdmin = (user!= undefined || user!=null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
 
   useEffect(() => {
     dispatch(getExperts());
@@ -65,8 +72,9 @@ const App = () => {
         <Route exact path="/signin" element={<SingIn/>}></Route>
         <Route exact path="/showBlog/:id" element={<ShowBlog/>}></Route>
         <Route exact path="/ChoseModel" element={<ChoseModel/>}  />
-        <Route path="/Build/:model_name" element={<Build/>}  />
+        <Route path="/Build/:idModel" element={<Build/>}  />
         <Route path="/Exploite/:tocken" element={<Exploite/>}  />
+        <Route path={isAdmin ? "/dashboard" : "/"} element={isAdmin ? <Dashboard /> : <h1 className='text-center'>Not Authorized</h1> }  />
 
 
       </Routes>

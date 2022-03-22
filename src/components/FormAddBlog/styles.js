@@ -8,17 +8,24 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    marginTop: '3%',
+    marginBottom: '3%'
   },
   form: {
-    display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center',
   },
   fileInput: {
     width: '97%',
     margin: '10px 0',
   },
   buttonSubmit: {
-    marginBottom: 10,
+    marginLeft: '50%',
+    backgroundColor: '#45E598',
+    "&:hover": {
+      backgroundColor: '#45E690',
+    },
   },
+  textField: {
+    width: '200%',
+  }
 }));

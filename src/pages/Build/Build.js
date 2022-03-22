@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { Redirect , } from "react-router-dom";
 import { Link } from "react-router-dom"
@@ -6,15 +6,47 @@ import buildlogo from '../../assets/images/build.png';
 import emptylogo from '../../assets/images/v.png';
 import { useParams } from "react-router-dom";
 import "./Build.css";
+import { useSelector,useDispatch } from "react-redux";
+import { createExploitable} from '../../actions/exploitables';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { getModels } from '../../actions/Models';
+import { updateExpert } from "../../api";
+import { toast} from 'react-toastify';
 
 
 var fileDownload = require('js-file-download');
 
 
 function Build() {
-  const { model_name } = useParams();
+  const dispatch = useDispatch();
+  var r = {};
+    useEffect(() => {
+        dispatch(getModels());
+        
+    }, [dispatch]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 
-  const [PyData, setPyData] = useState();
+  useEffect(() => {
+    const token = user?.token;
+
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  } , [location]) 
+
+  const { idModel } = useParams();
+  const Model = useSelector((state) =>(state.Models.find(model => model._id===idModel) ));
+  const Modelsdata = useSelector((state) =>(state.Models ));
+
+  // console.log(Modelsdata)
+  const model_name = Model.name;
+  
+
+  const [exploitData , setExploitData] = useState({ tocken: '' , modelname: '', accuracy: ''});
+
+
+  var [PyData, setPyData] = useState();
   const [modelname, setName] = useState();
   const [features, setfeatures] = useState([]);
   const [targets, settargets] = useState([]);
@@ -48,30 +80,54 @@ function Build() {
 
     
   };
+ 
   const onSubmit = (e) => {
       e.preventDefault();
       const data = new FormData();
-      console.log(model_name);
       data.append('model',model_name+'.py');
       data.append('modelname', modelname);
       data.append('features', features);
       data.append('targets', targets);
-      console.log(data);
       for(let i = 0; i < features.length; i++) {
         data.append('features', features[i]);
       }
       for(let i = 0; i < targets.length; i++) {
         data.append('targets', targets[i]);
       }
-
       axios.post('//localhost:5000/buildmodel', data)
-          .then((response) => {
-              setPyData(response.data);
-              setB(true);
+      .then((response) => {
+          toast.success('Upload Success');      
+          setPyData('ttttt');
+          console.log(PyData)
+          let ress =response.data
+          r['tocken']= ress.split("\r\n")[1];
+          r['modelname']= modelname;
+          r['accuracy']= ress.split("\r\n")[0];
+          dispatch(createExploitable(r))
+          navigate("/Exploite/"+ress.split("\r\n")[1]);
+      })
+      .catch((e) => {
+          toast.error('Upload Error')
+      })
+      //  axios.post('//localhost:5000/buildmodel', data)
+      //  .then((response) => {
+      //         setPyData(response.data.toString());
+      //         //  r.push({tocken:ress.split("\r\n")[1]})
+      //         //  r.push({modelname: modelname})
+      //         //  r.push({accuracy: ress.split("\r\n")[0]})
+      //         //  console.log(r)
+      //         // dispatch(createExploitable(r))
+               
+              
+              
+      //        navigate("/Exploite/"+r.split("\r\n")[1]);
 
-          })
-          .catch((e) => {
-          })
+              
+
+      //     })
+        //  console.log(PyData)
+        //   setExploitData({...exploitData , tocken: r[1] })
+        
 
   };
   
@@ -79,7 +135,7 @@ function Build() {
       <div className="containerb">
       <div className="sideb">
         <br></br>
-        <label className="Modelb">{model_name}</label>
+        <h2 className="Modelb">{model_name}</h2>
         <br></br><br></br><br></br><br></br>
         <div className="consdivb">
         <p style={{"fontSize": "33px"}}>Instructions : </p><br></br><br></br>
@@ -89,62 +145,73 @@ function Build() {
         <p style={{"textIndent":"30px"}}>&#10061; number of instances should be between 200 and 10 000.</p>
         </div>
       </div>
+
       <form className="sidebf">
         <div className="rowb">
-          <p><Link to='/chosemodel' className="backb">&lt; back</Link></p>
+          <p><Link to={`/models/${idModel}`} className="backb">&lt; back</Link></p>
         </div>
-        <div className="rowb">
-        <p><span className="buildyourb">Build your Random Forest Regression NOW!</span></p>
+        <div className="buildyourb">
+          Build your {model_name}
         </div>
         <div className="rowb" id="a">
-        <div className="lineb"></div>
-          <div className="modelnameb">
-            <label >Model name :  </label>
-            <input type="text" 
-                onChange={event => {
-                  const { value } = event.target;
-                  setName(value);
-                }} />
-          </div>
-          <div className="filesb">
-            <div className="fileb">
-              <label >Features : </label>
-              <input
-              id="J"
-                type="file"
-                name="features"
-                accept=".csv"
-                onChange={onInputChangeF}
-              /> 
-
-              
+          <div className="lineb"></div>
+            <div className="modelnameb">
+              <label className="mr-2">Exploitable name :  </label>
+              <input type="text" 
+                  onChange={event => {
+                    const { value } = event.target;
+                    setName(value);
+                  }} />
             </div>
-            <div className="fileb">
-              <label >Targets : </label>
-              <input
-                name="target"
-                  id="J"
-                  type="file"
-                  accept=".csv"
-                  size={10}
-                  onChange={onInputChangeT}
-              />
-              
-            </div>
+            
           </div>
-          
+        <div className="row justify-content-center">
+          <div className="col-2"></div>
+          <div className="col-4">
+            <h5 >Features : </h5>
+          </div>
+          <div className="col-2"></div>
+          <div className="col-4">
+            <h5 >Targets : </h5>
+          </div>
         </div>
+        <div className="row justify-content-center">
+          <div className="col-1"></div>
+          <div className="col-5">
+            <input
+            id="J"
+              className="fileInput"
+              type="file"
+              name="features"
+              accept=".csv"
+              onChange={onInputChangeF}
+            /> 
+          </div>
+          <div className="col-1"></div>
+          <div className="col-5">
+            <input
+              name="target"
+                className="ml-1"
+                id="J"
+                type="file"
+                accept=".csv"
+                size={10}
+                onChange={onInputChangeT}
+            />
+          </div>
+        </div>
+
         <div className="rowb">
           <div className="dowexb">
             <div className="lineb" id="S"></div>
-            <button className="dexamplesb" type="button" onClick={(e)=>download(e)}>download examples</button>
+            <button className="dexamplesb" type="button" onClick={(e)=>download(e)}>Download Examples</button>
             <div className="lineb" id="S"></div>
           </div>
           
         </div>
-        <div className="rowb">
+        {/* <div className="rowb">
           <button className="buildb" id="b"  type="button" onClick={(e)=>donothing(e)}>parametres avancés</button>
-        </div>
+        </div> */}
         <div className="rowb">
           <button type="submit" className="buildb" onClick={onSubmit} >
             <img src={emptylogo} alt="Logo" height={"35px"} ></img>
@@ -155,8 +222,7 @@ function Build() {
         </div>
       </form>
       
-      {b==true && PyData.split("\r\n")}
-        {b===true && <Redirect to={{pathname:"/Exploite/"+PyData.split("\r\n")[1] ,state:{ PyData: PyData , modelname :modelname }}}/>} 
+        
        
         </div>
     );

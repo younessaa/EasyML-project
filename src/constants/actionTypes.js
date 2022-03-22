@@ -5,6 +5,7 @@ export const FETCH_ALL_models = 'FETCH_ALL_models';
 
 export const FETCH_ALL_blogs = 'FETCH_ALL_blogs';
 export const CREATE_blog = 'CREATE_blog';
+export const DELETE_blog = 'DELETE_blog';
 
 export const CREATE_expert = 'CREATE_expert';
 export const UPDATE_expert = 'UPDATE_expert';

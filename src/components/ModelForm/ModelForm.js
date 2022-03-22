@@ -6,20 +6,17 @@ import axios from 'axios';
 
 
 import useStyles from './styles';
-import { createModel, updateModel } from '../../actions/Models';
+import { createModel} from '../../actions/Models';
 
-const ModelForm = ({ currentId, setCurrentId,expertId }) => {
+const ModelForm = ({ expertId }) => {
   const [modelData, setModelData] = useState({ name: '',owner: `${expertId}`,type: '', description: '',selectedFile: '', permission: 'not confirmed'});
-  const model = useSelector((state) => (currentId ? state.Models.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
 
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
 
-  useEffect(() => {
-    if (model) setModelData(model);
-  }, [model]);
+ 
 
 
 
@@ -44,10 +41,10 @@ const ModelForm = ({ currentId, setCurrentId,expertId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${model.name}"` : 'Add model'}</Typography>
-        <TextField name="name" variant="outlined" label="Model name" fullWidth value={modelData.name} onChange={(e) => setModelData({ ...modelData, name: e.target.value })} />
-        <TextField name="type" variant="outlined" label="Model type" fullWidth multiline rows={4} value={modelData.type} onChange={(e) => setModelData({ ...modelData, type: e.target.value })} />
-        <TextField name="description" variant="outlined" label="Model description" fullWidth multiline rows={4} value={modelData.description} onChange={(e) => setModelData({ ...modelData, description: e.target.value })} />
+        <Typography variant="h6">{'Add model'}</Typography>
+        <TextField className={classes.textField} name="name" variant="outlined" label="Model name" value={modelData.name} onChange={(e) => setModelData({ ...modelData, name: e.target.value })} />
+        <TextField className={classes.textField} name="type" variant="outlined" label="Model type" value={modelData.type} onChange={(e) => setModelData({ ...modelData, type: e.target.value })} />
+        <TextField className={classes.textField} name="description" variant="outlined" label="Model description" multiline rows={6} value={modelData.description} onChange={(e) => setModelData({ ...modelData, description: e.target.value })} />
         <div className={classes.fileInput}><input type="file" accept=".py"  onChange={FileChange}   /></div>
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth >Submit</Button>
       </form>

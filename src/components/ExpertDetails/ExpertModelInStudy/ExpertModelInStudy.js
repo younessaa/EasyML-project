@@ -16,7 +16,7 @@ const ModelInStudy = ({ modelInStudy}) => {
     <><div>
       </div>
               <tr>
-                  <td>{modelInStudy.name}</td>
+                  <th scope="row">{modelInStudy.name}</th>
                   <td>{modelInStudy.type}</td>
                   <td>{modelInStudy.selectedFile}</td>
                   <td>{modelInStudy.permission}</td>

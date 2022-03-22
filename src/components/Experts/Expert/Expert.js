@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import {deleteExpert } from '../../../actions/Experts';
 import useStyles from './styles';
 
-const Expert = ({ expert, setCurrentId }) => {
+const Expert = ({ user ,expert, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -22,16 +22,20 @@ const Expert = ({ expert, setCurrentId }) => {
         {/* <Typography variant="body2">{moment(expert.createdAt).fromNow()}</Typography> */}
       </div>
       </Link>
-      <div className={classes.overlay2}>
-        <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(expert._id)}><MoreHorizIcon fontSize="default" /></Button>
-      </div>
+      
       <Typography className={classes.title} gutterBottom variant="h5" component="h2">{expert.name}</Typography>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">{expert.description ? `${expert.description.substring(0, 70) + " ..."} ` : ""}</Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => dispatch(deleteExpert(expert._id))}><DeleteIcon fontSize="small" /> Delete</Button>
-      </CardActions>
+      { user!= undefined?
+          user.result.email==='EasyMLadmin@gmail.com'?
+            <CardActions className={classes.cardActions}>
+              <Button size="small" color="primary" onClick={() => dispatch(deleteExpert(expert._id))}><DeleteIcon fontSize="small" /> Delete</Button>
+            </CardActions>
+            :null
+          :null
+      }
+      
     </Card>
   );
 };

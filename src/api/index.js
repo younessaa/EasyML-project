@@ -9,6 +9,7 @@ const url_exploitables = 'http://localhost:5000/exploitables';
 
 export const fetchBlogs = () => axios.get(url_blogs);
 export const createBlog = (newBlog) => axios.post(url_blogs, newBlog);
+export const deleteBlog = (id) => axios.delete(`${url_blogs}/${id}`);
 
 export const fetchExperts = () => axios.get(url_experts);
 export const fetchExpert = (id) => axios.get(`${url_experts}/${id}`);

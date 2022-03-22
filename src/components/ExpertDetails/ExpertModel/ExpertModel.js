@@ -8,7 +8,6 @@ import {deleteModel} from '../../../actions/Models';
 import useStyles from './styles';
 
 const Model = ({ model}) => {
-  const dispatch = useDispatch();
   const classes = useStyles();
 
   return (

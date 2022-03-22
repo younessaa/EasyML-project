@@ -12,12 +12,14 @@ function HeaderLite () {
   const location = useLocation();
   const [isOpen , setIsOpen] = useState(false);
   const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+
+  const isAdmin = (user!= undefined || user!=null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
+  
   useEffect(() => {
     const token = user?.token;
     setUser(JSON.parse(localStorage.getItem('profile')))
   } , [location]) 
-  
-
+console.log(user)
   const logout = () =>{
     dispatch( {type: LOGOUT});
     navigate('/');
@@ -31,7 +33,7 @@ function HeaderLite () {
               <div className="row">
                   <div className="col-12">
                     <nav className="navbar navbar-expand-lg navbar-dark">
-                      <Link to="/" className="navbar-brand" href="#"><h1 className={styles.easyMLTitle}>EasyML</h1></Link>
+                      <Link className="navbar-brand" to={isAdmin ? "/dashboard" : "/"}><h1 className={styles.easyMLTitle}>{isAdmin ? "Dashboard" : "EasyML"}</h1></Link>
                       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                       </button>
