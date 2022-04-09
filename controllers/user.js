@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js'
+import mongoose from 'mongoose';
 
 export const signin = async (req, res)=> {
     const {email , password} = req.body;
@@ -35,8 +36,9 @@ export const signup = async (req, res) => {
 }
 export const createUser = async (req, res) => {
     const { name,email,password, id} = req.body;
-
-    const newUser = new User({  name,email,password, id })
+    const hashedPassword = await bcrypt.hash(password , 12);
+    console.log(hashedPassword)
+    const newUser = new User({name,email,password:hashedPassword, id })
 
     try {
         await newUser.save();

@@ -4,6 +4,9 @@ import predict from '../MachineLearning/controller.js'
 import multer from 'multer';
 import csv from 'fast-csv';
 import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 var tobepredicted="";
@@ -24,7 +27,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage});
 
 router.post('/predict/:tocken',upload.single('file') , (req, res) => {  
-
+  console.log('hii',req.params.tocken)
   let mesagefrompython = predict.predict(tocken,tobepredicted)
     mesagefrompython.then(function(result) {
       console.log('from Python :\n',result) 

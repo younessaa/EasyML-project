@@ -17,6 +17,9 @@ router.get('/experts/:expertId/blogs:blogId', getBlog);
 // create a blog for an expert
 router.post('/', createBlog);
 
+// delte a blog for an expert
+router.delete('/:id', deleteBlog);
+
 
 // update 1 blog belonging to 1 expert
 

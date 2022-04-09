@@ -1,11 +1,14 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 import useRegression from '../MachineLearning/controller.js'
-const multer = require('multer');
-
+import multer from 'multer'
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 var featurespath="";
 var targetspath="";
@@ -21,21 +24,33 @@ const storage = multer.diskStorage({
         featurespath=__dirname+"\\..\\MachineLearning\\data\\"+filename;
       }
       else{targetspath=__dirname+"\\..\\MachineLearning\\data\\"+filename}
-      cb(null, filename)
-  }
+      cb(null, filename)}
 });
 
-const cupload = multer({storage:storage}).fields([
+const upload =multer({storage:storage}).fields([
   { name: 'features', maxCount: 1 },
   { name: 'targets', maxCount: 1 },
 ]);
 
-router.post('/buildmodel',cupload, function(req, res){
-  console.log(req.body)
-   
-    return res.status(200).send('ok')
-  });
-
+router.post('/buildmodel', (req, res) => {
+  
+  upload(req, res, function (err) {
+      if (err) {
+        console.log(err)
+          return res.status(500).json(err)
+      }
+      console.log(req.body)
+     console.log(featurespath)
+     const{body :{model}}=req;
+      let mesagefrompython = useRegression.useRegression(model,featurespath,targetspath)
+      mesagefrompython.then(function(result) {
+        console.log(`from Python :\n`,result) 
+        return res.status(200).send(result)
+      })
+      
+      
+  })
+});
 
 
 

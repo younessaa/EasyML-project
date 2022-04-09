@@ -53,8 +53,9 @@ export const createBlog = async (req, res) => {
 
 // delete 1 blog belonging to 1 expert
 export const deleteBlog = async (req, res) => {
+    const { id } = req.params;
     try{
-        const blog = await Blog.findOneAndDelete({ idExpert: req.params.expertId, _id: req.params.blogId});
+        const blog = await Blog.findOneAndDelete({ _id: id});
 
         res.status(200).json(blog);
     } catch (error){

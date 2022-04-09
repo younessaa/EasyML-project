@@ -23,7 +23,7 @@ function useRegression(model,feature,target) {
 function predict(tocken,tobepredicted) {
     
     // spawn new child process to call the python script
-    const childPython = spawn('python' ,['./MachineLearning/prediction/predict.py',tocken,tobepredicted]);
+    const childPython = spawn.spawn('python' ,['./MachineLearning/prediction/predict.py',tocken,tobepredicted]);
     // collect data from script
     var dataToSend=new Promise( (resolve,reject)=>{
         childPython.stdout.on('data', function (data) {
