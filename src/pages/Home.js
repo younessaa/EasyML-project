@@ -269,8 +269,8 @@ const Home = () => {
                                 {
                                     blogs.map(
                                         (blog) => (
-                                            <div key={blog.id} className="text-center">
-                                                <BlogCard image={blog.selectedFile} content={blog.content} title={blog.title} link={blog._id}/>
+                                            <div key={blog._id} className="text-center">
+                                                <BlogCard image={blog.selectedFile} content={blog.content} title={blog.title} id={blog._id}/>
                                             </div>
                                         )
                                     )

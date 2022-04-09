@@ -15,3 +15,10 @@
     margin-left: 12.5%;
     margin-right: 12.5%;
 }
+
+.myModels {
+    background-color: rgba(243, 243, 243, 0.8);
+    margin-bottom: 1%;
+    padding-bottom: 2%;
+    border-radius: 8px;
+}

@@ -103,31 +103,14 @@ function Build() {
           r['tocken']= ress.split("\r\n")[1];
           r['modelname']= modelname;
           r['accuracy']= ress.split("\r\n")[0];
+          r['idUser']= user.result._id;
+          console.log(r)
           dispatch(createExploitable(r))
           navigate("/Exploite/"+ress.split("\r\n")[1]);
       })
       .catch((e) => {
           toast.error('Upload Error')
-      })
-      //  axios.post('//localhost:5000/buildmodel', data)
-      //  .then((response) => {
-      //         setPyData(response.data.toString());
-      //         //  r.push({tocken:ress.split("\r\n")[1]})
-      //         //  r.push({modelname: modelname})
-      //         //  r.push({accuracy: ress.split("\r\n")[0]})
-      //         //  console.log(r)
-      //         // dispatch(createExploitable(r))
-               
-              
-              
-      //        navigate("/Exploite/"+r.split("\r\n")[1]);
-
-              
-
-      //     })
-        //  console.log(PyData)
-        //   setExploitData({...exploitData , tocken: r[1] })
-        
+      })  
 
   };
   

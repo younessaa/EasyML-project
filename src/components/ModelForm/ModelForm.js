@@ -9,7 +9,7 @@ import useStyles from './styles';
 import { createModel} from '../../actions/Models';
 
 const ModelForm = ({ expertId }) => {
-  const [modelData, setModelData] = useState({ name: '',owner: `${expertId}`,type: '', description: '',selectedFile: '', permission: 'not confirmed'});
+  const [modelData, setModelData] = useState({ name: '',owner: `${expertId}`,type: '', description: '',selectedFile: '', permission: 'pending'});
   const dispatch = useDispatch();
   const classes = useStyles();
 

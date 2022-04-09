@@ -13,6 +13,7 @@
     text-decoration: none;
     justify-self: center;
     margin-right: 6%;
+    border: none;
 }
 
 .viewFile:hover {

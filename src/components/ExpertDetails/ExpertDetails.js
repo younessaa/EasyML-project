@@ -14,6 +14,7 @@ import HeaderLite from '../HeaderLite/HeaderLite';
 import Footer from "../Footer/Footer";
 import styles from './ExpertDetails.module.css';
 import FormAddBlog from '../FormAddBlog/FormAddBlog';
+import UnderLineText from '../../components/UnderLineText/UnderLineText'
 
 const ExpertDetails = ({currentId,setCurrentId}) => {
     const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')))
@@ -56,17 +57,26 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
         </Paper>
       </div>
 
+      <div className={styles.myModels + ' container-md'}>
 
-      
-      {
-        (user!= undefined || user!=null)?
-      modeles.filter(model => model.permission ==='confirmed' && model.owner === id).map((model) => (
-        <Grid key={model._id} item xs={12} sm={6} md={6}>
-          <Model model={model} />
-        </Grid>
-      ))
-      :null
-      }
+        <div className='row justify-content-center'>
+          {
+            (user!= undefined || user!=null)?
+            (user.result.email===expert.idUser)?
+            <>
+
+              <UnderLineText text="My Models"/>
+              {modeles.filter(model => model.permission ==='confirmed' && model.owner === id).map((model) => (
+                <div className='col'>
+                  <Model model={model} />
+                </div>
+              ))}
+            </>
+          :null
+          :null
+          }
+        </div>
+      </div>
 
       {
         (user!= undefined || user!=null)?

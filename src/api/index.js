@@ -4,12 +4,15 @@ const url_experts = 'http://localhost:5000/experts';
 const url_models = 'http://localhost:5000/models';
 const API = axios.create({baseURL : 'http://localhost:5000'});
 const url_blogs = 'http://localhost:5000/blogs';
+const url_sendMail = 'http://localhost:5000/send-mail';
 const url_user = 'http://localhost:5000/user';
 const url_exploitables = 'http://localhost:5000/exploitables';
 
 export const fetchBlogs = () => axios.get(url_blogs);
 export const createBlog = (newBlog) => axios.post(url_blogs, newBlog);
 export const deleteBlog = (id) => axios.delete(`${url_blogs}/${id}`);
+
+export const sendMail = (newMail) => axios.post(url_sendMail, newMail);
 
 export const fetchExperts = () => axios.get(url_experts);
 export const fetchExpert = (id) => axios.get(`${url_experts}/${id}`);

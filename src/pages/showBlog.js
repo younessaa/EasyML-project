@@ -33,19 +33,19 @@ function ShowBlog () {
             <ShowBogs texts={blogData.content}/>
             <UnderLineText text="Blogs"/>
             {
-                !blogs.length ? <div className="justify-content-center"><CircularProgress /></div> :
+                !blogs.length ? <div className="text-center mt-1"><CircularProgress /></div> :
                     <div className={styles.blogs}>
                         <div className="container-md">
                             <div className="mt-4">  
                                 {
                                     blogs.map(
                                         (blog) => (
-                                            <div key={blog.id} className="text-center">
+                                            <div key={blog._id} className="text-center">
                                                 <BlogCard 
                                                     image={blog.selectedFile} 
                                                     title={blog.title}
                                                     content={blog.content}
-                                                    link={blog._id} 
+                                                    id={blog._id} 
                                                 />
                                             </div>
                                         )

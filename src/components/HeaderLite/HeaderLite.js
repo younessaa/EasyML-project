@@ -61,6 +61,15 @@ console.log(user)
                             </Link>
 
                           </li>
+                          { (user!= undefined || user!=null)?
+                        <li className="nav-item active">
+                          <Link className={styles.linkSignIn} to={`/showExploitable`}> 
+                            <div className="nav-link" ><span className={styles.navLink}><span className="link-nav-bar">Exploitables</span></span></div>
+                            </Link>
+                        </li>
+                          :null
+
+                      }
                            
                           {user ? (
                           <><li className={styles.btnSingIn}>
@@ -75,6 +84,12 @@ console.log(user)
                             </Link>
                           </li>
                     ) }
+                    
+                      
+                          
+
+                          
+                    
                         </ul>
                       </div>
                     </nav>

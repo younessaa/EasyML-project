@@ -12,10 +12,10 @@ const Experts = ({ user,setCurrentId }) => {
   return (
     <div className='container mb-3'>
       {
-        !expertis.length ? <CircularProgress /> : (
+        !expertis.length ? <div className='text-center mt-1'><CircularProgress /></div> : (
           <div className='row'>
             {expertis.map((expert) => (
-              <div className='col-4 mt-2'>
+              <div className='col-3 mt-2'>
                 <Expert user={user} expert={expert} setCurrentId={setCurrentId} />
               </div>
             ))}

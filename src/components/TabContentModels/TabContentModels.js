@@ -22,14 +22,7 @@ function TabContentModels() {
     const models = useSelector((state) => state.Models);
     console.log(models);
 
-    const model = {id: "afg14567ggs", type: "Supervised", name: "Linear Regression", owner: "ahmed", idOwner: "b3g14567ggs", selectedFile: "ertyusbsbb"}
-    const modelsList = [
-        model,
-        model,
-        model,
-        model,
-    ];
-
+    
     return (
         <div className={styles.TabContentModels}>
             <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -51,23 +44,23 @@ function TabContentModels() {
                 <div className="tab-pane active" id="allModels" role="tabpanel" aria-labelledby="home-tab">
                     <div className={styles.TabContentCard}>
                         <div className='row text-center'>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                                 ID
                             </div>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                                 Name / <strong>Type</strong>
                             </div>
-                            <div className='col'>
-                                Owner / <strong>ID</strong>
+                            <div className='col-sm-4'>
+                                Owner / <strong>Permission</strong>
                             </div>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                                 Created At
                             </div>
-                            <div className='col'> 
+                            <div className='col-sm-2'> 
                             </div>
                         </div>
                         {
-                            models.map( (model) => (
+                            models.filter(model => model.permission==='confirmed' || model.permission==='admin').map( (model) => (
                                 <>
                                     <div className={styles.TabBorder}></div>
                                     <TabCardModel 
@@ -76,6 +69,7 @@ function TabContentModels() {
                                         type={model.type} 
                                         owner={model.owner} 
                                         permission={model.permission}
+                                        selectedFile={model.selectedFile}
                                     />
                                 </>
                             ) )
@@ -93,7 +87,7 @@ function TabContentModels() {
                                 Name / <strong>Type</strong>
                             </div>
                             <div className='col-sm-2'>
-                                Owner / <strong>ID</strong>
+                                Owner / <strong>Permission</strong>
                             </div>
                             <div className='col-sm-2'>
                                 Created At
@@ -104,7 +98,7 @@ function TabContentModels() {
                             </div>
                         </div>
                         {
-                            modelsList.map( (model) => (
+                            models.filter(model => model.permission==='pending').map( (model) => (
                                 <>
                                     <div className={styles.TabBorder}></div>
                                     <TabCardModelPending 
@@ -113,6 +107,7 @@ function TabContentModels() {
                                         type={model.type} 
                                         owner={model.owner} 
                                         permission={model.permission}
+                                        selectedFile={model.selectedFile}
                                     />
                                 </>
                             ) )
@@ -123,25 +118,25 @@ function TabContentModels() {
                 <div className="tab-pane" id="cancelled" role="tabpanel" aria-labelledby="messages-tab">
                     <div className={styles.TabContentCard}>
                         <div className='row text-center'>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                                 ID
                             </div>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                                 Name / <strong>Type</strong>
                             </div>
-                            <div className='col'>
-                                Owner / <strong>ID</strong>
+                            <div className='col-sm-2'>
+                                Owner / <strong>Permission</strong>
                             </div>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                                 Created At
                             </div>
-                            <div className='col'> 
+                            <div className='col-sm-2'> 
                             </div>
-                            <div className='col'>
+                            <div className='col-sm-2'>
                             </div>
                         </div>
                         {
-                            models.map( (model) => (
+                            models.filter(model => model.permission==='cancelled' ).map( (model) => (
                                 <>
                                     <div className={styles.TabBorder}></div>
                                     <TabCardModelCanceled 
@@ -150,6 +145,7 @@ function TabContentModels() {
                                         type={model.type} 
                                         owner={model.owner} 
                                         permission={model.permission}
+                                        selectedFile={model.selectedFile}
                                     />
                                 </>
                             ) )

@@ -8,7 +8,9 @@ import Footer from "../components/Footer/Footer";
 import { CircularProgress } from "@material-ui/core";
 import ImageHeaderLite from '../components/ImageHeaderLite/ImageHeaderLite';
 import HeaderLite from '../components/HeaderLite/HeaderLite';
+import BlogCard  from "../components/BlogCard/BlogCard";
 import bgBlogs from '../assets/images/bg-blogs.svg';
+import styles from '../assets/styles/Blogs.module.css';
 
 import { getBlogs } from '../actions/blogs';
 
@@ -40,14 +42,17 @@ function Blogs() {
           </div>
     </div>
 
-    {blogs.map( (blog)=> (
-      <div style={{display:"flex" ,margin:"12px"}}>
-        <Blog blog={blog}/>
-        <Image blog={blog}/>
-      </div>
-
-    
-    ))}
+    <div className={styles.blogs + " container-md mt-0 p-0"}>     
+          {
+              blogs.map(
+                  (blog) => (
+                      <div key={blog._id} className="text-center">
+                          <BlogCard image={blog.selectedFile} content={blog.content} title={blog.title} id={blog._id}/>
+                      </div>
+                  )
+              )
+          }
+    </div>
 
     <div style={{margin: "0 auto" , width: "0%"}}>
       <Button color="rgba(196, 110, 184)" title='More'  />

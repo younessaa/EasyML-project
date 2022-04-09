@@ -1,15 +1,30 @@
 import React, {useEffect} from 'react';
 import styles from './TabCardModel.module.css';
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import path from 'path';
+import axios from "axios";
 
 import { getModels, deleteModel } from '../../../actions/Models';
+var fileDownload = require('js-file-download');
 
-import { useDispatch } from "react-redux";
+
+
 
 function TabCardModel({id, name, type, owner, permission, selectedFile}) {
+    
 
     const dispatch = useDispatch();
-    
+    const download = (e) => {
+     
+        axios({
+          url:"//localhost:5000/downloadmodell/"+selectedFile,
+          method:"GET",
+          responseType:"blob"
+        }).then((res)=>{
+          fileDownload(res.data,selectedFile)
+        })
+      }
     const deleteM = () => {
         dispatch(deleteModel(id));
     }
@@ -30,7 +45,7 @@ function TabCardModel({id, name, type, owner, permission, selectedFile}) {
                     <pre>20/03/2021</pre>
                 </div>
                 <div className='col-sm-4'>
-                    <Link to='' className={styles.viewFile}>View</Link>
+                    <button onClick={ () => download() } className={styles.viewFile} >Download</button>
                     <button onDoubleClick={ () => deleteM() } className={styles.deleteModel}>Delete</button>
                 </div>
             </div>

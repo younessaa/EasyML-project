@@ -13,7 +13,7 @@ const ModelsInStudy = ({ modeles,id}) => {
 
   return (
     <>
-      <h3 className='text-center m-2 mb-4'>Models Not Confirmed</h3>
+      <h3 className='text-center m-2 mb-4'>Models state</h3>
       <div className='container-md'>
         <table className="table table-striped">
           <thead>
@@ -25,7 +25,7 @@ const ModelsInStudy = ({ modeles,id}) => {
             </tr>
           </thead>
           <tbody>
-            {modeles.filter(model => model.permission ==='not confirmed' && model.owner === id).map((model) => (
+            {modeles.filter(model =>  model.owner === id).map((model) => (
                 <ModelInStudy modelInStudy={model}/>
               ))
             }

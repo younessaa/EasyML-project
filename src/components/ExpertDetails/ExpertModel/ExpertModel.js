@@ -5,16 +5,21 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import {deleteModel} from '../../../actions/Models';
-import useStyles from './styles';
+import styles from './ExpertModel.module.css';
+import './ExpertModel.css';
 
-const Model = ({ model}) => {
-  const classes = useStyles();
+const ExpertModel = ({ model}) => {
 
   return (
-    <div>
-        {model.name}
-    </div>
+      <div className={'card '+styles.cards}>
+          <h5 className={"card-header "+ styles.cardHeader}>{model.name}</h5>
+          <div className="card-body">
+              <h5 className="card-title">Type : {model.type}</h5>
+              <p className="card-text">{model.description}</p>
+              <Link to={`/Build/${model._id}`} className={"btn "+styles.butt}>Build</Link>
+          </div>
+      </div>
   );
 };
 
-export default Model;
+export default ExpertModel;
