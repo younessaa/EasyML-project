@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const url_experts = 'http://localhost:5000/experts';
-const url_models = 'http://localhost:5000/models';
-const API = axios.create({baseURL : 'http://localhost:5000'});
-const url_blogs = 'http://localhost:5000/blogs';
-const url_sendMail = 'http://localhost:5000/send-mail';
-const url_user = 'http://localhost:5000/user';
-const url_exploitables = 'http://localhost:5000/exploitables';
+const url_experts = 'https://easyml-app.herokuapp.com/experts';
+const url_models = 'https://easyml-app.herokuapp.com/models';
+const API = axios.create({baseURL : 'https://easyml-app.herokuapp.com'});
+const url_blogs = 'https://easyml-app.herokuapp.com/blogs';
+const url_sendMail = 'https://easyml-app.herokuapp.com/send-mail';
+const url_user = 'https://easyml-app.herokuapp.com/user';
+const url_exploitables = 'https://easyml-app.herokuapp.com/exploitables';
 
 export const fetchBlogs = () => axios.get(url_blogs);
 export const createBlog = (newBlog) => axios.post(url_blogs, newBlog);

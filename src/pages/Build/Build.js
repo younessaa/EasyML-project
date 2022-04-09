@@ -64,14 +64,14 @@ function Build() {
   }
   const download = (e) => {
     axios({
-      url:"//localhost:5000/downloadfexmpl",
+      url:"//easyml-app.herokuapp.com/downloadfexmpl",
       method:"GET",
       responseType:"blob"
     }).then((res)=>{
       fileDownload(res.data,'featureexample.csv')
     })
     axios({
-      url:"//localhost:5000/downloadtexmpl",
+      url:"//easyml-app.herokuapp.com/downloadtexmpl",
       method:"GET",
       responseType:"blob"
     }).then((res)=>{
@@ -94,7 +94,7 @@ function Build() {
       for(let i = 0; i < targets.length; i++) {
         data.append('targets', targets[i]);
       }
-      axios.post('//localhost:5000/buildmodel', data)
+      axios.post('//easyml-app.herokuapp.com/buildmodel', data)
       .then((response) => {
           toast.success('Upload Success');      
           setPyData('ttttt');
