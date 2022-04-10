@@ -33,7 +33,7 @@ const App = () => {
   console.log(user)
 
   const isAdmin = (user!== undefined || user!==null) ? 
-        ( user.result === null ? false : (user.result.email==='EasyMLadmin@gmail.com' ? true : false))
+        ( (user.result === undefined ||user.result === null) ? false : (user.result.email==='EasyMLadmin@gmail.com' ? true : false))
         : false ;
 
 
