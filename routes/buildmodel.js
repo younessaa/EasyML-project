@@ -41,9 +41,11 @@ const upload =multer({storage:storage}).fields([
 
 
 router.post('/', function (req, res) {
+  res.header("Access-Control-Allow-Origin", "https://easyml.netlify.app");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   
+  console.log(`Python :\n`) 
   upload(req, res, function (err) {
-      console.log(`Python :\n`) 
       if (err) {
         console.log(err)
           return res.status(500).json(err)
