@@ -97,7 +97,6 @@ function Build() {
       {
         method: 'post',
         url: "https://easyml-app.herokuapp.com/buildmodel",
-        
         data: data
       }
       )
