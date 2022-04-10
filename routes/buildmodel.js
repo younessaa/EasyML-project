@@ -41,10 +41,6 @@ const upload =multer({storage:storage}).fields([
 
 
 router.post('/buildmodel', function (req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  req.header("Access-Control-Allow-Origin", "*");
-
   
   upload(req, res, function (err) {
       console.log(`Python :\n`) 
