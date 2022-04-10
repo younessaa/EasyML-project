@@ -36,7 +36,7 @@ const upload =multer({storage:storage}).fields([
   { name: 'targets', maxCount: 1 },
 ]);
 
-router.post('/buildmodel', cors(), (req, res) => {
+router.post('/buildmodel', (req, res) => {
   
   upload(req, res, function (err) {
       if (err) {

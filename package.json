@@ -24,6 +24,8 @@
     "multer": "^1.4.4",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
+    "python": "^0.0.4",
+    "python3": "^0.0.1",
     "react-toastify": "^8.2.0"
   }
 }
