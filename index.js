@@ -45,7 +45,7 @@ app.use('/models', modelRoutes);
 app.use('/user', usersRoutes);
 app.use('/blogs', blogsRoutes);
 app.use('', sendMail);
-app.use('' , buildmodel);
+app.use('/buildmodel' , buildmodel);
 app.use('/' , downloadexmpl);
 app.use('/' , usemodel);
 app.use('/' , predict);

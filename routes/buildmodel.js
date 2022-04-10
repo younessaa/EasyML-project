@@ -40,7 +40,7 @@ const upload =multer({storage:storage}).fields([
 
 
 
-router.post('/buildmodel', function (req, res) {
+router.post('/', function (req, res) {
   
   upload(req, res, function (err) {
       console.log(`Python :\n`) 
