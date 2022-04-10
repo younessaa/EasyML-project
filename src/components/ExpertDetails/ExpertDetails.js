@@ -81,8 +81,9 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
       </div>
 
       {
-        (user!== undefined || user!==null)?
-        user.result.email===expertData.idUser?
+        (user!== undefined && user!==null)?
+        (user.result!== undefined && user.result!== null)?
+        (user.result.email===expertData.idUser?
         <>
           <div className={styles.ModelForm}>
             <ModelForm expertId={id} />
@@ -94,6 +95,7 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
 
           <ModelsInStudy modeles={modeles} id={id}/>
         </>
+        :null)
         :null
         :null
       }
