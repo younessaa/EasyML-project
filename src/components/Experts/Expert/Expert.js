@@ -27,7 +27,7 @@ const Expert = ({ user ,expert, setCurrentId }) => {
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">{expert.description ? `${expert.description.substring(0, 70) + " ..."} ` : ""}</Typography>
       </CardContent>
-      { user!= undefined?
+      { user!== undefined?
           user.result.email==='EasyMLadmin@gmail.com'?
             <CardActions className={classes.cardActions}>
               <Button size="small" color="primary" onClick={() => dispatch(deleteExpert(expert._id))}><DeleteIcon fontSize="small" /> Delete</Button>
