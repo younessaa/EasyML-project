@@ -32,7 +32,7 @@ router.post("/send-mail", function (req, res) {
 
     let mailOptions = {
         from: process.env.EMAIL,
-        to: "aknouchaknouch333@gmail.com",
+        to: "youness.aabaoui7@gmail.com",
         subject: subject,
         text: text + " from " + to,
     };
