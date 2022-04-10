@@ -61,7 +61,7 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
 
         <div className='row justify-content-center'>
           {
-            (user!== undefined || user!==null)?
+            (user!== undefined && user!==null)?
             (user.result!== undefined && user.result!== null)?
             ((user.result.email===expert.idUser)?
             <>
