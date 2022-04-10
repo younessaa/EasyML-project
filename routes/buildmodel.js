@@ -2,6 +2,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 import express from 'express';
+import cors from 'cors';
 const router = express.Router();
 import useRegression from '../MachineLearning/controller.js'
 import multer from 'multer'
@@ -34,6 +35,8 @@ const upload =multer({storage:storage}).fields([
   { name: 'features', maxCount: 1 },
   { name: 'targets', maxCount: 1 },
 ]);
+
+router.use(cors());
 
 router.post('/buildmodel', (req, res) => {
   
