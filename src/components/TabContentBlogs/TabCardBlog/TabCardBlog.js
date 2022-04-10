@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './TabCardBlog.module.css';
 
-import { getBlogs, deleteBlog } from '../../../actions/blogs';
+import { deleteBlog } from '../../../actions/blogs';
 
 import { useDispatch } from "react-redux";
 

@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './TabCardExpert.module.css';
 
-import { getExperts, deleteExpert } from '../../../actions/Experts';
+import { deleteExpert } from '../../../actions/Experts';
 
 import { useDispatch } from "react-redux";
 
@@ -16,7 +16,7 @@ function TabCardExpert({id, name, idUser , selectedFile, profession}) {
         <div className={styles.TabCardExpert}>
             <div className='row text-center'>
                 <div className='col-sm-2'>
-                    <pre><img src={selectedFile} className={styles.expertProfile}/></pre>
+                    <pre><img src={selectedFile} className={styles.expertProfile} alt="expert"/></pre>
                 </div>
                 <div className='col-sm-3'>
                     <pre>{id}</pre>

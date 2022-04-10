@@ -15,7 +15,6 @@ function Header () {
   const isAdmin = (user!= undefined || user!=null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
 
   useEffect(() => {
-    const token = user?.token;
     setUser(JSON.parse(localStorage.getItem('profile')))
   } , [location]) 
   

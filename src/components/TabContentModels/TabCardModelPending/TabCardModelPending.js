@@ -40,7 +40,7 @@ function TabCardModelPending({id, name, type, owner, permission, selectedFile}) 
     const download = (e) => {
      
         axios({
-          url:"//localhost:5000/downloadmodell/"+selectedFile,
+          url:"//easyml-app.herokuapp.com/downloadmodell/"+selectedFile,
           method:"GET",
           responseType:"blob"
         }).then((res)=>{

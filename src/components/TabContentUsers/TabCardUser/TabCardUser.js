@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+
 import styles from './TabCardUser.module.css';
 
-import { getUsers, deleteUser } from '../../../actions/auth';
+import { deleteUser } from '../../../actions/auth';
 
 import { useDispatch } from "react-redux";
 
@@ -17,7 +17,7 @@ function TabCardUser({id, name, email, selectedFile}) {
         <div className={styles.TabCardUser}>
             <div className='row text-center'>
                 <div className='col-sm-2'>
-                    <img src={selectedFile} className={styles.userProfile}/>
+                    <img src={selectedFile} className={styles.userProfile} alt="user"/>
                 </div>
                 <div className='col-sm-2'>
                     <pre>{id}</pre>
