@@ -1,11 +1,6 @@
 import React , {useEffect} from 'react';
-import Blog from "../components/Blog/Blog"
 import Button from "../components/Button"
-import Image from "../components/Blog/Image"
-import Page from "../components/Blog/Page"
-import AppNavBar from "../components/AppNavBar/AppNavBar"
 import Footer from "../components/Footer/Footer";
-import { CircularProgress } from "@material-ui/core";
 import ImageHeaderLite from '../components/ImageHeaderLite/ImageHeaderLite';
 import HeaderLite from '../components/HeaderLite/HeaderLite';
 import BlogCard  from "../components/BlogCard/BlogCard";

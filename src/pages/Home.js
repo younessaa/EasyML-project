@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import lrImage from '../assets/images/lr-img.svg';
 import rfrImage from '../assets/images/rfr-img.svg';
 import svrImage from '../assets/images/svr-img.svg';
-import blogImage from '../assets/images/blog-img.png';
 import Header from "../components/Header/Header";
 import UnderLineText from "../components/UnderLineText/UnderLineText";
 import IconText from "../components/IconText/IconText";

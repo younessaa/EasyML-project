@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch , useSelector} from 'react-redux';
 import ShowBogs from './../components/blogDetails/showBogs';
-import blogImage from "./../images/blog.jpg";
-import blogImage1 from"./../images/blog11.jpg";
 import BlogTitles from '../components/blogDetails/blogTitles';
-import SimilarBlog from './../components/blogDetails/similarBlog';
-import OneBlog from '../components/blogDetails/oneBlog';
 import { useParams } from "react-router-dom";
 import UnderLineText from "../components/UnderLineText/UnderLineText";
 import styles from '../assets/styles/Home.module.css';
