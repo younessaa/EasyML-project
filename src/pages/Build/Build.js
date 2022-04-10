@@ -93,11 +93,14 @@ function Build() {
       for(let i = 0; i < targets.length; i++) {
         data.append('targets', targets[i]);
       }
-      axios.post('//easyml-app.herokuapp.com/buildmodel', data ,{
-        headers: {
-          'Access-Control-Allow-Origin' : '*',
-        }
-      })
+      axios.post(
+      {
+        method: 'post',
+        url: "https://easyml-app.herokuapp.com/buildmodel",
+        
+        data: data
+      }
+      )
       .then((response) => {
           toast.success('Upload Success');      
           setPyData('ttttt');
