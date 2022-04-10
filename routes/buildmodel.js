@@ -9,6 +9,7 @@ import multer from 'multer'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+router.all('*', cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,7 +37,7 @@ const upload =multer({storage:storage}).fields([
   { name: 'targets', maxCount: 1 },
 ]);
 
-router.use(cors());
+
 
 router.post('/buildmodel', (req, res) => {
   
