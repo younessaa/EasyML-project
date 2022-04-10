@@ -93,7 +93,7 @@ function Build() {
       for(let i = 0; i < targets.length; i++) {
         data.append('targets', targets[i]);
       }
-      axios.post(
+      axios(
       {
         method: 'post',
         url: "https://easyml-app.herokuapp.com/buildmodel",
