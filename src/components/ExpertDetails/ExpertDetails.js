@@ -61,7 +61,7 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
 
         <div className='row justify-content-center'>
           {
-            (user!= undefined || user!=null)?
+            (user!== undefined || user!==null)?
             (user.result.email===expert.idUser)?
             <>
 
@@ -79,7 +79,7 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
       </div>
 
       {
-        (user!= undefined || user!=null)?
+        (user!== undefined || user!==null)?
         user.result.email===expertData.idUser?
         <>
           <div className={styles.ModelForm}>
