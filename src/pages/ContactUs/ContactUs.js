@@ -69,7 +69,7 @@ function ContactUs() {
         axios(
           {
             method: 'post',
-            url: "http://localhost:5000/send-mail",
+            url: "https://easyml-app.herokuapp.com/send-mail",
             headers: {
               "Content-type": "application/json",
             },
@@ -94,7 +94,7 @@ function ContactUs() {
             <div className="container-md p-3">
                 <Form inline className={styles.form + " mt-2"} onSubmit={handleSubmit}>
                     <FormGroup floating>
-                        <Input id="fname" name="to" placeholder="To"  type="email"  className={styles.TextFieldInput} onChange={handleChange}/>
+                        <Input id="fname" name="to" placeholder="Email"  type="email"  className={styles.TextFieldInput} onChange={handleChange}/>
                         <Label for="fname" style={{color:"#99879D"}}> To </Label>
                     </FormGroup> 
                     <FormGroup floating>
@@ -103,7 +103,7 @@ function ContactUs() {
                     </FormGroup>
                 
                     <FormGroup className={styles.formGroup} floating>
-                        <Input id="email" name="text" placeholder="Message"  type="text"  className={styles.TextFieldInput} onChange={handleChange}/>
+                        <Input id="email" name="text" placeholder="Message" type="text"  className={styles.TextFieldInput} onChange={handleChange}/>
                         <Label for="email" style={{color:"#99879D"}}> Message</Label>
                     </FormGroup>
                     <input style={{backgroundColor:'#4285F4' , color:"white"}} type='submit' value= {'Send Mail'} className="btn btn-block"/>
