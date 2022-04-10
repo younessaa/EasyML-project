@@ -13,10 +13,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-var corsOptions = {
-  origin: 'https://easyml.netlify.app',
-  optionsSuccessStatus: 200 
-}
 
 var featurespath="";
 var targetspath="";
@@ -40,7 +36,7 @@ const upload =multer({storage:storage}).fields([
   { name: 'targets', maxCount: 1 },
 ]);
 
-router.post('/buildmodel', cors(corsOptions), (req, res) => {
+router.post('/buildmodel', cors(), (req, res) => {
   
   upload(req, res, function (err) {
       if (err) {
