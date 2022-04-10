@@ -93,7 +93,7 @@ function Build() {
       for(let i = 0; i < targets.length; i++) {
         data.append('targets', targets[i]);
       }
-      axios.post('//easyml-app.herokuapp.com/buildmode', data ,{
+      axios.post('//easyml-app.herokuapp.com/buildmodel', data ,{
         headers: {
           'Access-Control-Allow-Origin' : '*',
         }
