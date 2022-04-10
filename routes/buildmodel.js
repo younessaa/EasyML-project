@@ -3,7 +3,6 @@ const require = createRequire(import.meta.url);
 
 import express from 'express';
 const router = express.Router();
-import cors from 'cors';
 import useRegression from '../MachineLearning/controller.js'
 import multer from 'multer'
 import path from 'path';
