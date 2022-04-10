@@ -97,10 +97,6 @@ function Build() {
       {
         method: 'post',
         url: "https://easyml-app.herokuapp.com/buildmodel",
-        headers: {
-          "Content-type": "multipart/form-data",
-          'Access-Control-Allow-Origin' : '*',
-        },
         data: data
       }
       )
