@@ -32,7 +32,7 @@ const App = () => {
   const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   console.log(user)
 
-  const isAdmin = (user!= undefined || user!=null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
+  const isAdmin = (user!== undefined || user!==null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
 
   useEffect(() => {
     dispatch(getExperts());
