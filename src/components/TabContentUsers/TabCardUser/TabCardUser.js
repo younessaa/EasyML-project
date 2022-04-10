@@ -1,4 +1,4 @@
-
+import React from 'react';
 import styles from './TabCardUser.module.css';
 
 import { deleteUser } from '../../../actions/auth';
