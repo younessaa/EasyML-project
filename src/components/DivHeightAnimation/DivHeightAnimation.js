@@ -34,7 +34,7 @@ export default class DivHeightAnimation extends Component {
           <div className='container-md p-2'>
                 <div className={styles.bgDeterm}>
                     <h3 className={styles.dHeader}>Determining the Best Learning Model</h3>
-                    <p className={styles.text1}>According to IBM :<a className={styles.machineLearningForDummiesPDF} href='https://www.ibm.com/downloads/cas/GB8ZMQZ3' target='_blank' rel="noreferrer" >Machine Learning for dummies.</a> </p>
+                    <p className={styles.text1}>According to IBM :<a className={styles.machineLearningForDummiesPDF} href='https://www.ibm.com/downloads/cas/GB8ZMQZ3' target='_blank' rel="noopener noreferrer" >Machine Learning for dummies.</a> </p>
                     <div className='text-center'>
                         <p className={styles.text2}>
                             One of the most complex tasks for applying machine learning
