@@ -12,9 +12,10 @@ function Header () {
   const [isOpen , setIsOpen] = useState(false);
   const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-  // const isAdmin = (user!== undefined || user!==null)? user.result.email==='EasyMLadmin@gmail.com' ? true : false : false ;
-
-  const isAdmin = false;
+  const isAdmin = (user!== undefined && user!==null) ? 
+        ( (user.result === undefined || user.result === null) ? false 
+        : (user.result.email==='EasyMLadmin@gmail.com' ? true : false))
+        : false ;
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('profile')))
