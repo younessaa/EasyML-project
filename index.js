@@ -37,6 +37,7 @@ app.use('/' , usemodel);
 app.use('/' , predict);
 app.use('/' , downloadmodell);
 app.use('/' , upload);
+app.use('/buildmodel');
 
 
 const CONNECTION_URL = 'mongodb://akenouch:24861379@cluster0-shard-00-00.p0wac.mongodb.net:27017,cluster0-shard-00-01.p0wac.mongodb.net:27017,cluster0-shard-00-02.p0wac.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-dq29kg-shard-0&authSource=admin&retryWrites=true&w=majority';
