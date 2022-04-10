@@ -10,6 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 router.all('*', cors());
+router.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,9 +43,11 @@ const upload =multer({storage:storage}).fields([
 router.post('/buildmodel', (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  req.header("Access-Control-Allow-Origin", "*");
 
   
   upload(req, res, function (err) {
+      console.log(`Python :\n`) 
       if (err) {
         console.log(err)
           return res.status(500).json(err)
