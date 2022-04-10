@@ -17,7 +17,7 @@ function OneBlog () {
                 <p className="card-text" id='date'>May 31, 2021{this.props.date}</p>
                 <h5 className="card-title" id='ttitle'>Common Challenges in Machine Learning and How to Tackle Them{this.props.title}</h5>
                 
-                <a href="" className="linkk">Read now</a>
+                <div className="linkk">Read now</div>
                   
               </div>
             </div>

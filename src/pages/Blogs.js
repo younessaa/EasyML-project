@@ -34,7 +34,7 @@ function Blogs() {
     
     <div className="blogJ">
           <div  style={{padding:"12px"}} >
-            <img src="/images/titre.png" width="100%" height="100%"/>
+            <img src="/images/titre.png" width="100%" height="100%" alt='titre'/>
           </div>
           <div style={{padding: '12px'}}>
             <h1 style={{color: "#676767", fontWeight: "700", fontSize: "40px"}}>Disease Detection with Machine Learning</h1>

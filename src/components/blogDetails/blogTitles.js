@@ -20,7 +20,7 @@ function BlogTitles ({title,img}) {
                 
                 
             </div>
-            <img className="card-img-left col-sm-4" style={{ padding: "50px"}} src={img} alt="image blog"/>
+            <img className="card-img-left col-sm-4" style={{ padding: "50px"}} src={img} alt="blog"/>
             
           </div>
             

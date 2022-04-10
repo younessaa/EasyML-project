@@ -42,7 +42,7 @@ const ExpertDetails = ({currentId,setCurrentId}) => {
         <Paper className={classes.paper}>
           <div className='row text-center mb-2'>
             <div className='col-6'>
-              <img className={styles.imgExpert} src={expertData.selectedFile} alt='expert photo'/>
+              <img className={styles.imgExpert} src={expertData.selectedFile} alt='expert'/>
             </div>
             <div className='col-4 mt-2'>
               <h1>{expertData.name}</h1>
