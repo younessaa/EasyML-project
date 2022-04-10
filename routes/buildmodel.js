@@ -9,12 +9,14 @@ import multer from 'multer'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const app = express();
-
-app.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+var corsOptions = {
+  origin: 'https://easyml.netlify.app',
+  optionsSuccessStatus: 200 
+}
 
 var featurespath="";
 var targetspath="";
@@ -38,7 +40,7 @@ const upload =multer({storage:storage}).fields([
   { name: 'targets', maxCount: 1 },
 ]);
 
-router.post('/buildmodel', (req, res) => {
+router.post('/buildmodel', cors(corsOptions), (req, res) => {
   
   upload(req, res, function (err) {
       if (err) {
