@@ -76,7 +76,7 @@ function TabContentExperts() {
             </div>
             </div>
             <div className="tab-pane active" id="addExpert" role="tabpanel" aria-labelledby="home-tab">
-                { (user!== undefined || user!==null)?
+                { (user!== undefined && user!==null)?
                     user.result.email==='EasyMLadmin@gmail.com'?
                     <Form />
                         :null
